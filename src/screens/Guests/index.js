@@ -2,18 +2,21 @@ import React from 'react'
 import { View, Text, Pressable } from 'react-native'
 import styles from './styles.js'
 import { useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
 
 const GuestsScreen = () => {
 
     const [adults, setAdults] = useState(0);
     const [childrens, setChildrens] = useState(0);
     const [infants, setInfants] = useState(0);
+    const navigation = useNavigation();
 
     return (
-        <View>
+        <View style={{ justifyContent: 'space-between', height: '100%'}}>
 
-            {/* Row 1: Adults */}
-            <View style={ styles.row}>
+            <View>
+                 {/* Row 1: Adults */}
+                <View style={ styles.row}>
 
                 {/* Titles */}
                 <View>
@@ -40,11 +43,11 @@ const GuestsScreen = () => {
                     </Pressable>
 
                 </View>
-            </View>
-            {/* Row 1 end */}
+                </View>
+                {/* Row 1 end */}
 
-            {/* Row 2: Childrens */}
-            <View style={ styles.row}>
+                {/* Row 2: Childrens */}
+                <View style={ styles.row}>
 
                 {/* Titles */}
                 <View>
@@ -71,11 +74,11 @@ const GuestsScreen = () => {
                     </Pressable>
 
                 </View>
-            </View>
-            {/* Row 2 end  */}
+                </View>
+                {/* Row 2 end  */}
 
-            {/* Row 3: Adults */}
-            <View style={ styles.row}>
+                {/* Row 3: Adults */}
+                <View style={ styles.row}>
 
                 {/* Titles */}
                 <View>
@@ -102,9 +105,32 @@ const GuestsScreen = () => {
                     </Pressable>
 
                 </View>
+                </View>
+                {/* row 3 end */}
             </View>
-            {/* row 3 end */}
-
+           
+            <Pressable 
+                onPress={() => 
+                    navigation.navigate('Home', {
+                        screen: 'Explore',
+                        params :{
+                            screen: 'SearchResults',
+                        },
+                    }) 
+                }
+                style={{
+                    marginBottom: 20, 
+                    backgroundColor: '#f15454', 
+                    alignItems: 'center', 
+                    justifyContent: 'center', 
+                    height: 50, 
+                    marginHorizontal: 30, 
+                    borderRadius: 10
+                  }}>
+                   <Text style={{fontSize: 20, color: 'white', fontWeight: 'bold'}}>
+                       Proceed
+                    </Text>
+            </Pressable>
         </View>
     )
 }
